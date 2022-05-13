@@ -3,7 +3,6 @@ import sys
 import cv2 as cv
 import time
 import winsound
-import win32con, win32api
 import os
 import os.path
 import xml.etree.ElementTree as et
@@ -67,7 +66,6 @@ def main():
 			tree.write("project.xml")"""
 			break
 		
-		# img = cv.CreateImage((int(img_orig.width/4), int(img_orig.height/4)), cv.IPL_DEPTH_8U, 3)
 		img = cv.resize(img_orig, img_orig.shape[:2][::-1], 0.25, 0.25, interpolation=cv.INTER_AREA)
 		
 		if frame_counter == 0: # erster frame
@@ -126,9 +124,7 @@ def main():
 					cv.imshow("win", img)
 				winsound.PlaySound(soundfile, winsound.SND_FILENAME|winsound.SND_ASYNC)
 				print("%.3f" % ((0.4*d_color + 0.6*(1-d_hist))), "%.3f" % (d_color), "%.3f" % (1-d_hist), frame_counter)
-			if DEBUG and DEBUG_INTERACTIVE:
-				if win32api.MessageBox(0, "cut?", "", win32con.MB_YESNO) == 6: #yes
-					cv.imwrite(OUTPUT_DIR_NAME + "\\%06d.png" % (frame_counter), img)
+				cv.imwrite(OUTPUT_DIR_NAME + "\\%06d.png" % (frame_counter), img)
 			else:
 				cv.imwrite(OUTPUT_DIR_NAME + "\\%06d.png" % (frame_counter), img)
 		
