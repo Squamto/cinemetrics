@@ -4,8 +4,8 @@ import os
 import os.path
 import sys
 import numpy as np
-import scipy
-import scipy.cluster
+from sklearn.cluster import KMeans
+from collections import Counter
 import math
 
 #from lib import hls_sort
@@ -64,6 +64,22 @@ def sort_by_distance(colors):
 	
 	return sorted
 
+def quantize(orig_img, n_colors=10):
+	orig = cv.cvtColor(orig_img, cv.COLOR_BGR2LAB)
+
+	quantized = orig.reshape((orig.shape[0]*orig.shape[1], 3))
+
+	clt = KMeans(n_clusters=n_colors)
+	labels = clt.fit_predict(quantized)
+	quantized = clt.cluster_centers_.astype("uint8")[labels]
+
+	quantized = quantized.reshape(orig.shape)
+
+	quantized = cv.cvtColor(quantized, cv.COLOR_LAB2BGR)
+
+	return quantized
+
+
 
 WIDTH = 1000
 OUTPUT_DIR_NAME = "shot_colors"
@@ -74,22 +90,16 @@ def main():
 	os.chdir(project_root_dir)
 	os.chdir(os.path.join(OUTPUT_DIR_NAME, OUTPUT_DIR_NAME))
 	
-	print(os.system("wsl identify -format \"%k\" result.png"))
+	# print(os.system("wsl identify -format \"%k\" result.png"))
 	print("reducing colors to 10")
 	# os.system("wsl convert result.png +dither -colors 10 result_quant.png")
 	
 	orig = cv.imread("result.png")
-
-	div = 128
-	quantized = orig // div * div + div // 2
+	quantized = quantize(orig)
 
 	cv.imwrite("result_quant.png", quantized)
 
-	del orig
-	del quantized
-
-
-	img_orig = cv.imread("result_quant.png")
+	img_orig = quantized
 	output_img = np.zeros((WIDTH, WIDTH, 3), np.uint8)
 	
 	img_hls = cv.cvtColor(img_orig, cv.COLOR_BGR2HLS)
