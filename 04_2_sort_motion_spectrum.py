@@ -4,6 +4,7 @@ import numpy as np
 import os
 import os.path
 import sys
+import glob
 
 
 OUTPUT_DIR_NAME = "downsampled"
@@ -17,12 +18,19 @@ def main():
 		pass
 	
 	#os.system("del klein\\*.png")
-	os.system("wsl convert motion_*.png -adaptive-resize 500x500! " + OUTPUT_DIR_NAME + "/motion_%02d.png")
+	# os.system("wsl convert motion_*.png -adaptive-resize 500x500! " + OUTPUT_DIR_NAME + "/motion_%02d.png")
+
+	files = glob.glob("motion_*.png")
+
+	for file in files:
+		orig = cv.imread(file)
+		resized = cv.resize(orig, (500, 500))
+		cv.imwrite(f"OUTPUT_DIR_NAME/{file}", resized)
+
 	
 	os.chdir(OUTPUT_DIR_NAME)
 
 	from lib import append_images
-	import glob
 	append_images(glob.glob("./motion_*.png"), "result.png")
 
 
