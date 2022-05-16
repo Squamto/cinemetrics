@@ -8,13 +8,16 @@ project = sys.argv[1]
 title = os.path.split(project)[1]
 
 # Wenn der Kreis am Ende eine komische Größe hat, kann man das hier ausgleichen
-# Die Länge des Videos sollte nach dem Multiplikator ca. auf 1,5h kommen
 duration_factor = 1
 
-with open(os.path.join(project, "motion_shot-avg.txt")) as file:
-    shots = [line.strip().split("\t") for line in file if line]
-    
-shots = [{"motion": float(m), "duration": int(d)*duration_factor*duration_factor} for m, d in shots]
+
+with open(os.path.join(project, "chapters.txt")) as file:
+    chapters = [int(line.strip()) for line in file if line]
+
+movie_duration = chapters[-1]
+
+duration_factor *= 180000/movie_duration
+
 
 with open(os.path.join(project, "colors.txt")) as file:
     colors = [line.strip().split(", ") for line in file if line]
@@ -23,13 +26,14 @@ colors = [[int(x) for x in c] for c in colors]
 total = sum(c[3] for c in colors)
 colors = [{"rgb": c[:3], "%":c[3]/total} for c in colors]
 
-
-with open(os.path.join(project, "chapters.txt")) as file:
-    chapters = [int(line.strip())*duration_factor for line in file if line]
-
-movie_duration = chapters[-1]
-
+chapters = [chapter*duration_factor for chapter in chapters]
 movie = {"colors": colors, "duration": movie_duration*duration_factor}
+
+
+with open(os.path.join(project, "motion_shot-avg.txt")) as file:
+    shots = [line.strip().split("\t") for line in file if line]
+    
+shots = [{"motion": float(m), "duration": int(d)*duration_factor} for m, d in shots]
 
 
 with open(os.path.join(project, "chapter_colors.txt")) as file:
