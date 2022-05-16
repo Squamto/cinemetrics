@@ -5,6 +5,7 @@ import os
 import os.path
 import sys
 import glob
+import shutil
 
 
 OUTPUT_DIR_NAME = "downsampled"
@@ -25,7 +26,8 @@ def main():
 	for file in files:
 		orig = cv.imread(file)
 		resized = cv.resize(orig, (500, 500))
-		cv.imwrite(f"OUTPUT_DIR_NAME/{file}", resized)
+		cv.imwrite(f"{OUTPUT_DIR_NAME}/{file}", resized)
+		os.remove(file)
 
 	
 	os.chdir(OUTPUT_DIR_NAME)

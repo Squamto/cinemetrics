@@ -39,8 +39,12 @@ def main():
 	frame = start_frame
 	counter = 1
 	
+	print("Exporting stills")
+
 	while 1:
-		print(counter)
+		if counter % 25 == 0:
+			print(f"{counter}/{end_frame//every_nth_frame}")
+
 		ret, img = cap.read()
 		if not ret or frame > end_frame:
 			break

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html data-lt-installed="true" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+
+		<!-- Primary Meta Tags -->
+		<title>CINEMETRICS</title>
+		<meta name="title" content="CINEMETRICS">
+		<meta name="description" content="CINEMETRICS is a tool for analysing, visualizing, and comparing formal characteristics of movies.">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://cinemetrics.site/">
+		<meta property="og:title" content="CINEMETRICS">
+		<meta property="og:description" content="CINEMETRICS is a tool for analysing, visualizing, and comparing formal characteristics of movies.">
+		<meta property="og:image" content="https://cinemetrics.site/assets/preview.jpg">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://cinemetrics.site/">
+		<meta property="twitter:title" content="CINEMETRICS">
+		<meta property="twitter:description" content="CINEMETRICS is a tool for analysing, visualizing, and comparing formal characteristics of movies.">
+		<meta property="twitter:image" content="https://cinemetrics.site/assets/preview.jpg">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="https://cinemetrics.site/assets/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://cinemetrics.site/assets/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://cinemetrics.site/assets/favicon/favicon-16x16.png">
+		<link rel="manifest" href="https://cinemetrics.site/assets/favicon/site.webmanifest">
+
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			html, body {
+				width: 100vw;
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				font-family: sans-serif;
+				font-size: 16px;
+				background: rgb(215, 215, 215);
+				overflow: hidden;
+			}
+
+			#app {
+				width: 100%;
+				height: 100%;
+			}
+
+			a, a:hover, a:active, a:visited {
+				color: black;
+			}
+
+			#still {
+				z-index: 9999;
+				display: none;
+				pointer-events: none;
+				position: absolute;
+			}
+		</style>
+	<style data-emotion="css"></style></head>
+	<body>
+		<div id="app"><div id="app-inner"><div class="css-4wh1vh"><div><img src="CINEMETRICS_files/a.svg" alt="add movie"></div></div><div class="css-b9dvun"><div><img src="CINEMETRICS_files/a.svg" alt="add movie"></div></div><div class="css-cxwey9"><div><div class="css-knqx17"><select><option value=""></option><option value="2001">2001</option><option value="Alien">Alien</option><option value="Aliens">Aliens</option><option value="Annie Hall">Annie Hall</option><option value="Back to the Future">Back to the Future</option><option value="Bottle Rocket">Bottle Rocket</option><option value="Casablanca">Casablanca</option><option value="Dr. No">Dr. No</option><option value="Fantastic Mr. Fox">Fantastic Mr. Fox</option><option value="Ghostbusters">Ghostbusters</option><option value="Invasion of the Body Snatchers">Invasion of the Body Snatchers</option><option value="Jacques Cousteau">Jacques Cousteau</option><option value="La Haine">La Haine</option><option value="Little Miss Sunshine">Little Miss Sunshine</option><option value="Lost in Translation">Lost in Translation</option><option value="Metropolis">Metropolis</option><option value="Papillon">Papillon</option><option value="Porn" disabled="disabled" selected="selected">Porn</option><option value="Pulp Fiction">Pulp Fiction</option><option value="Quantum of Solace">Quantum of Solace</option><option value="Simpsons">Simpsons</option><option value="Soccer Match">Soccer Match</option><option value="Solaris">Solaris</option><option value="Solyaris">Solyaris</option><option value="The Birds">The Birds</option><option value="The Blair Witch Project">The Blair Witch Project</option><option value="The Darjeeling Limited">The Darjeeling Limited</option><option value="The Good the Bad &amp; the Ugly">The Good the Bad &amp; the Ugly</option><option value="The Goonies">The Goonies</option><option value="The Kids Are All Right">The Kids Are All Right</option><option value="The Life Aquatic">The Life Aquatic</option><option value="The Matrix">The Matrix</option><option value="The Royal Tenenbaums">The Royal Tenenbaums</option><option value="The Shining">The Shining</option><option value="The Usual Suspects">The Usual Suspects</option><option value="Top Gun">Top Gun</option><option value="Two-Lane Blacktop">Two-Lane Blacktop</option><option value="Up In The Air">Up In The Air</option><option value="When Harry Met Sally">When Harry Met Sally</option></select><div class="css-84dpck" disabled=""><img src="CINEMETRICS_files/x.svg" alt="remove"></div></div><div class="css-1s5i0nl"><br></div></div></div><div class="css-16wz8ze"><canvas style="width: 1320px; height: 703px; cursor: default;" id="canvas" width="1650" height="878"></canvas></div><div class="css-15s93id"><div class="css-4bd34w"><a href="#/info">Info</a></div><div class="css-1gj0xck"><div class="css-10q1la5"><div class="css-1b027sx">Options:</div><div><div class="css-ibdtyj"><input type="checkbox" id="colors-checkbox-movie" checked="checked"><label for="colors-checkbox-movie">Movie colors</label></div><div class="css-ibdtyj"><input type="checkbox" id="colors-checkbox-chapters"><label for="colors-checkbox-chapters">Chapter colors</label></div></div></div><div><div class="css-19g310x">Presets:</div><select><option value="" disabled="disabled" selected="selected"></option><option value="Re-Make: Sol(y)aris">Re-Make: Sol(y)aris</option><option value="Color: B/W">Color: B/W</option><option value="Director: Wes Anderson">Director: Wes Anderson</option><option value="Director: Stanley Kubrick">Director: Stanley Kubrick</option><option value="Series: Alien">Series: Alien</option><option value="Series: James Bond">Series: James Bond</option><option value="Genre: Space">Genre: Space</option><option value="Genre: Action">Genre: Action</option><option value="Genre: Horror">Genre: Horror</option><option value="Archetypes">Archetypes</option></select></div></div></div><div id="still" class="css-vrwdov" style="display: none;"><img id="still-image" src="" class="css-6mdzjw"></div></div></div>
+		<script src="CINEMETRICS_files/vendor.js"></script>
+		<script src="CINEMETRICS_files/main.js"></script>
+	
+
+</body></html>

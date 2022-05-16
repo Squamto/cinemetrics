@@ -150,7 +150,7 @@ def main():
 				counter = 1
 				last_px = px
 		
-		print(NUM_CLUSTERS - len(data_items), "colors missing")
+		# print(NUM_CLUSTERS - len(data_items), "colors missing")
 		for j in range( NUM_CLUSTERS - len(data_items) ): # sometimes there are fewer colors
 			data_items.append("0, 0, 0, 0")
 		f_out.write( " _ ".join(data_items) )

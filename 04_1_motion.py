@@ -62,7 +62,8 @@ def main():
 	t = time.time()
 	
 	for nr, line in enumerate(lines):
-		print((nr+1), "/", len(lines))
+		if nr % 50 == 0:
+			print((nr+1), "/", len(lines))
 		
 		duration = int( line.split("\t")[2] )
 		
@@ -100,7 +101,7 @@ def main():
 			f_frm.write("%f\n" % (d_color))
 			if frame_counter == duration-1: # last frame of current shot
 				motion_value = sum(motion) / len(motion)
-				print("average motion:", motion_value)
+				# print("average motion:", motion_value)
 				f_avg.write("%f\t%d\n" % (motion_value, duration))
 				motion = []
 			

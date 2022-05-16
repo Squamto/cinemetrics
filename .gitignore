@@ -1,4 +1,4 @@
-c4d_render.bat
-*.pyc
-*.jsx
-*/
+__pycache__
+projects
+*.ipynb
+Site/data

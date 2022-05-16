@@ -65,6 +65,8 @@ def smooth(x, window_len=11, window='hanning'):
 	y = numpy.convolve(w/w.sum(), s, mode='same')
 	return y[window_len:-window_len+1]
 
+
+import os
 def append_images(images, result_path):
 	result = None
 
@@ -72,9 +74,10 @@ def append_images(images, result_path):
 		if result is None:
 			result = cv.imread(file)
 		else:
-			print(file)
 			result = numpy.concatenate((result, cv.imread(file)), axis=0)
 	
+		os.remove(file)
+
 	cv.imwrite(result_path, result)
 	
 

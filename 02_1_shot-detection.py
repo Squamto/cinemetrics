@@ -2,7 +2,6 @@
 import sys
 import cv2 as cv
 import time
-import winsound
 import os
 import os.path
 import xml.etree.ElementTree as et
@@ -119,10 +118,11 @@ def main():
 
 		# combine both methods to make a decision
 		if ((0.4*d_color + 0.6*(d_hist/150))) >= THRESHOLD:
+			print(f"found cut at frame {frame_counter}")
 			if DEBUG:
 				if frame_counter % 2 == 0:
 					cv.imshow("win", img)
-				winsound.PlaySound(soundfile, winsound.SND_FILENAME|winsound.SND_ASYNC)
+				# winsound.PlaySound(soundfile, winsound.SND_FILENAME|winsound.SND_ASYNC)
 				print("%.3f" % ((0.4*d_color + 0.6*(1-d_hist))), "%.3f" % (d_color), "%.3f" % (1-d_hist), frame_counter)
 				cv.imwrite(OUTPUT_DIR_NAME + "\\%06d.png" % (frame_counter), img)
 			else:
@@ -138,13 +138,13 @@ def main():
 		average = np.average(v_plane)
 		if average <= 0.6:
 			if not last_frame_black: # possible the start
-				print("start", frame_counter)
+				print("fade to black start at frame ", frame_counter)
 				black_frame_start = frame_counter
 			last_frame_black = True
 		else:
 			if last_frame_black: # end of a series of black frames
 				cut_at = black_frame_start + int( (frame_counter - black_frame_start) / 2 )
-				print("end", frame_counter, "cut at", cut_at)
+				print("fade to black end at frame", frame_counter, "cut at", cut_at)
 				img_black = np.zeros((int(img_orig.shape[1]/4), int(img_orig.shape[0]/4), 3), np.uint8)
 				img_black[::] = (0, 255, 0)
 				cv.imwrite(OUTPUT_DIR_NAME + "\\%06d.png" % (cut_at), img_black)
