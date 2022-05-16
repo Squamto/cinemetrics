@@ -11,6 +11,10 @@ def main():
 	_, movie_file = os.path.split(sys.argv[1])
 	os.chdir(os.path.split(sys.argv[0])[0])
 	project_dir = os.path.splitext(movie_file)[0]
+	
+	if not os.path.exists(PROJECTS_DIR_NAME):
+		os.mkdir(PROJECTS_DIR_NAME)
+	
 	try:
 		os.mkdir(os.path.join(PROJECTS_DIR_NAME, project_dir))
 	except:

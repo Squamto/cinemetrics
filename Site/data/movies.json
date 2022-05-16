@@ -1,0 +1,7 @@
+{
+	"movies": {
+		"Alien": "movies/Alien/data.json"
+	},
+	
+	"presets": {}
+}
