@@ -28,7 +28,7 @@ Als erstes muss man ein Projekt erstellen:
 `python 01_1_new-project.py <voller Pfad zur Datei>`  
 Der Pfad des neuen Projektes ist `projects/<Name der Datei ohne Endung>`
 
-Der Rest ist automatisiert: `process_video.bat <Pfad zum Projekt>` *!!ohne letzem Slash!!*
+Der Rest ist automatisiert: `process_video.[bat/sh] <Pfad zum Projekt>` *!!ohne letzem Slash!!*
 
 ## Visualisierung
 
