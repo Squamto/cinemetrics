@@ -1,9 +1,12 @@
 
 # Allgemeines
 
-Der Code ist sehr alt und ich habe ihn nur zum Laufen gebracht. Man kann ihn an einigen Stellen verbessern, aber es funktioniert erstmal.
+Der Code ist sehr alt und ich habe ihn nur zum Laufen gebracht. Man kann ihn an einigen Stellen verbessern, aber es funktioniert erstmal. 
+Allerdings ist er dementsprechend mäßig schnell :)
 
 Für die Visualisierung wird nur ca. die Hälfte der Dateien genutzt. Die anderen laufen zwar, brauchen mehr manuellen Eingriff.
+
+Ich habe die Beispieldateien der originalen Website dem Release hinzugefügt. Im Repo selbst ist nur *Alien* als Beispiel.   
 
 # Nutzung
 
@@ -34,6 +37,7 @@ Die eigentliche Visualisierung passiert im Browser. Die Website dafür ist im Or
 Zum Starten der Website muss man einen Server nutzen. Am einfachsten ist es mit der Extension `Live Server`.
 > Damit es funktioniert muss man den Site-Ordner mit VSCode direkt öffen. Ist das der Fall, kann man einfach auf `Go Live` in der unteren rechten Ecke drücken und es sollte funktionieren. 
 
+Sollte der resultierende Kreis eine komische Größe haben, kann man das in `convert.py` ausgleichen, indem man `duration_factor` anpasst und `convert.py` erneut ausführt.
 
 # Old Readme
 
