@@ -10,15 +10,12 @@ Für die Visualisierung wird nur ca. die Hälfte der Dateien genutzt. Die andere
 ## Voraussetzungen
 
 ### pip
+
 - opencv_python
 - numpy
 - scipy
 - sklearn
-- glob
-
 - colormath
-- xml
-- shutil
 
 ## Auswertung
 
@@ -28,7 +25,7 @@ Als erstes muss man ein Projekt erstellen:
 `python 01_1_new-project.py <voller Pfad zur Datei>`  
 Der Pfad des neuen Projektes ist `projects/<Name der Datei ohne Endung>`
 
-Der Rest ist automatisiert: `process_video.bat <Pfad zum Projekt>`
+Der Rest ist automatisiert: `process_video.bat <Pfad zum Projekt>` *!!ohne letzem Slash!!*
 
 ## Visualisierung
 
